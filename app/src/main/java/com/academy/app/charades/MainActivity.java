@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        answerText = findViewById(R.id.answerText);
+        answerText = (TextView) findViewById(R.id.answerText);
         answerText.setText("Reply is hazy, try again tomorrow");
     }
 }
