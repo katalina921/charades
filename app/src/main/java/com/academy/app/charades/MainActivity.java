@@ -4,10 +4,10 @@ import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.util.FloatMath;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +34,13 @@ public class MainActivity extends AppCompatActivity {
 
             if(acceleration > 15){
                 Toast toast = Toast.makeText(getApplication(), "Device has shaken", Toast.LENGTH_SHORT);
+
+                MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.drumroll);
+                mediaPlayer.start();
+
+                String charades = Questions.get().getQuestion();
+                answerText.setText(charades);
+
                 toast.show();
             }
         }
@@ -57,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         previousAcceleration = SensorManager.GRAVITY_EARTH;
 
         answerText = (TextView) findViewById(R.id.answerText);
-        answerText.setText("Questions.get().getQuestion()");
+        answerText.setText(Questions.get().getQuestion());
     }
 
     @Override

@@ -1,14 +1,25 @@
 package com.academy.app.charades;
 
+import java.util.Random;
+
 public class Questions {
 
     private static Questions questions;
     private String[] answers;
+    public Random rand = new Random();
+    public int randInt = 0;
+
 
     private Questions() {
         answers = new String[] {
                 "Brushing your teeth.",
-                "Singing"
+                "Singing",
+                "DO A BARREL ROLL",
+                "Fishing",
+                "Dancing",
+                "The Robot",
+                "The Macorena",
+                "Sleeping"
 
         };
     }
@@ -20,6 +31,7 @@ public class Questions {
     }
 
     public String getQuestion(){
-        return answers[1];
+        randInt = rand.nextInt(answers.length);
+        return answers[randInt];
     }
 }
